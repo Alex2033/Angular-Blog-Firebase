@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { PostPageComponent } from './post-page/post-page.component';
+import { AdminModule } from './admin/admin.module';
 
 const routes: Routes = [
   {
@@ -24,10 +25,18 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'admin',
+    loadChildren: './admin/admin.module#AdminModule',
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules,
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
