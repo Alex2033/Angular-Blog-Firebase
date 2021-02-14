@@ -9,9 +9,15 @@ import { PostPageComponent } from './post-page/post-page.component';
 import { PostComponent } from './shared/components/post/post.component';
 
 @NgModule({
-  declarations: [AppComponent, MainLayoutComponent, HomePageComponent, PostPageComponent, PostComponent],
+  declarations: [
+    AppComponent,
+    MainLayoutComponent,
+    HomePageComponent,
+    PostPageComponent,
+    PostComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
