@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../shared/components/admin-layout/interfaces';
 import { AuthService } from '../shared/services/auth.service';
 
@@ -17,6 +17,8 @@ import { AuthService } from '../shared/services/auth.service';
 export class LoginPageComponent implements OnInit {
   public form: FormGroup;
   public submitted: boolean = false;
+
+  private message: string;
 
   get emailControl(): AbstractControl {
     return this.form.get('email');
@@ -30,9 +32,19 @@ export class LoginPageComponent implements OnInit {
     return this.form.invalid || this.submitted;
   }
 
-  constructor(public auth: AuthService, private router: Router) {}
+  constructor(
+    public auth: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      if (params['loginAgain']) {
+        this.message = 'Пожалуйста, введите данные';
+      }
+    });
+
     this.buildForm();
   }
 

@@ -7,6 +7,7 @@ import { DashboardPageComponent } from './dashboard-page/dashboard-page.componen
 import { CreatePageComponent } from './create-page/create-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 @NgModule({
   imports: [
@@ -20,9 +21,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         children: [
           { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
           { path: 'login', component: LoginPageComponent },
-          { path: 'dashboard', component: DashboardPageComponent },
-          { path: 'create', component: CreatePageComponent },
-          { path: 'post/:id/edit', component: EditPageComponent },
+          {
+            path: 'dashboard',
+            component: DashboardPageComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'create',
+            component: CreatePageComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'post/:id/edit',
+            component: EditPageComponent,
+            canActivate: [AuthGuard],
+          },
         ],
       },
     ]),
@@ -35,6 +48,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CreatePageComponent,
     EditPageComponent,
   ],
-  providers: [],
+  providers: [AuthGuard],
 })
 export class AdminModule {}
