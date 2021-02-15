@@ -30,7 +30,7 @@ export class LoginPageComponent implements OnInit {
     return this.form.invalid || this.submitted;
   }
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(public auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -58,10 +58,15 @@ export class LoginPageComponent implements OnInit {
       password: this.passwordControl.value,
     };
 
-    this.auth.login(user).subscribe(() => {
-      this.form.reset();
-      this.router.navigate(['/admin', 'dashboard']);
-      this.submitted = false;
-    });
+    this.auth.login(user).subscribe(
+      () => {
+        this.form.reset();
+        this.router.navigate(['/admin', 'dashboard']);
+        this.submitted = false;
+      },
+      () => {
+        this.submitted = false;
+      }
+    );
   }
 }
