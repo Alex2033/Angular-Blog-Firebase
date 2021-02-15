@@ -5,6 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from '../shared/components/admin-layout/interfaces';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -13,6 +16,7 @@ import {
 })
 export class LoginPageComponent implements OnInit {
   public form: FormGroup;
+  public submitted: boolean = false;
 
   get emailControl(): AbstractControl {
     return this.form.get('email');
@@ -22,7 +26,11 @@ export class LoginPageComponent implements OnInit {
     return this.form.get('password');
   }
 
-  constructor() {}
+  get isValidForm(): boolean {
+    return this.form.invalid || this.submitted;
+  }
+
+  constructor(private auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -42,5 +50,18 @@ export class LoginPageComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
+
+    this.submitted = true;
+
+    const user: User = {
+      email: this.emailControl.value,
+      password: this.passwordControl.value,
+    };
+
+    this.auth.login(user).subscribe(() => {
+      this.form.reset();
+      this.router.navigate(['/admin', 'dashboard']);
+      this.submitted = false;
+    });
   }
 }
