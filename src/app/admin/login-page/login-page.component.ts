@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../shared/components/admin-layout/interfaces';
+import { User } from '../shared/interfaces';
 import { AuthService } from '../shared/services/auth.service';
 
 @Component({
@@ -17,8 +17,7 @@ import { AuthService } from '../shared/services/auth.service';
 export class LoginPageComponent implements OnInit {
   public form: FormGroup;
   public submitted: boolean = false;
-
-  private message: string;
+  public message: string;
 
   get emailControl(): AbstractControl {
     return this.form.get('email');
