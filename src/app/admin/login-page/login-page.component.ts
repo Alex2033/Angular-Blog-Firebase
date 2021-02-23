@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../shared/interfaces';
-import { AuthService } from '../shared/services/auth.service';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -41,6 +41,8 @@ export class LoginPageComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       if (params['loginAgain']) {
         this.message = 'Пожалуйста, введите данные';
+      } else if (params['authFailed']) {
+        this.message = 'Сессия истекла. Введите данные заново';
       }
     });
 

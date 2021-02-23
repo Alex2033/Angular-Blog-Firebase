@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Post } from '../shared/interfaces';
-import { PostsService } from '../shared/services/posts.service';
+import { PostsService } from '../shared/posts.service';
 
 @Component({
   selector: 'app-create-page',
