@@ -10,6 +10,7 @@ import { PostsService } from '../shared/posts.service';
 })
 export class DashboardPageComponent implements OnInit {
   public posts: Observable<Post[]>;
+  public searchStr: string = '';
 
   constructor(private postsService: PostsService) {}
 

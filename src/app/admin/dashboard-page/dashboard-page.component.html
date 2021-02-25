@@ -1,6 +1,6 @@
 <div *ngIf="(posts | async)?.length; else loading">
   <div class="form-control">
-    <input type="text" placeholder="Найти пост..." />
+    <input type="text" placeholder="Найти пост..." [(ngModel)]="searchStr" />
   </div>
   <table>
     <thead>
@@ -13,7 +13,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let post of posts | async; let idx = index">
+      <tr
+        *ngFor="
+          let post of posts | async | searchPosts: searchStr;
+          let idx = index
+        "
+      >
         <td>{{ idx + 1 }}</td>
         <td>{{ post.author }}</td>
         <td>{{ post.title }}</td>
