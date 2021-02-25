@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Post } from '../shared/interfaces';
 import { PostsService } from '../shared/posts.service';
 
@@ -28,7 +29,7 @@ export class CreatePageComponent implements OnInit {
     return this.form.get('text');
   }
 
-  constructor(private postsService: PostsService) {}
+  constructor(private postsService: PostsService, private router: Router) {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -56,6 +57,7 @@ export class CreatePageComponent implements OnInit {
 
     this.postsService.create(post).subscribe(() => {
       this.form.reset();
+      this.router.navigate(['/admin', 'dashboard']);
     });
   }
 }
