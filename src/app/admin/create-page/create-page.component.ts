@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from '../shared/alert.service';
 import { Post } from '../shared/interfaces';
 import { PostsService } from '../shared/posts.service';
 
@@ -29,7 +30,11 @@ export class CreatePageComponent implements OnInit {
     return this.form.get('text');
   }
 
-  constructor(private postsService: PostsService, private router: Router) {}
+  constructor(
+    private postsService: PostsService,
+    private router: Router,
+    private alert: AlertService
+  ) {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -57,6 +62,7 @@ export class CreatePageComponent implements OnInit {
 
     this.postsService.create(post).subscribe(() => {
       this.form.reset();
+      this.alert.success('Пост был создан');
       this.router.navigate(['/admin', 'dashboard']);
     });
   }

@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './shared/auth.guard';
 import { QuillModule } from 'ngx-quill';
 import { SearchPipe } from './shared/search.pipe';
+import { AlertComponent } from './shared/alert/alert.component';
+import { AlertService } from './shared/alert.service';
 
 @NgModule({
   imports: [
@@ -51,7 +53,8 @@ import { SearchPipe } from './shared/search.pipe';
     CreatePageComponent,
     EditPageComponent,
     SearchPipe,
+    AlertComponent,
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, AlertService],
 })
 export class AdminModule {}

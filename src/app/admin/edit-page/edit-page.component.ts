@@ -8,6 +8,7 @@ import {
 import { ActivatedRoute, Params } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
 import { switchMap, takeUntil } from 'rxjs/operators';
+import { AlertService } from '../shared/alert.service';
 import { Post } from '../shared/interfaces';
 import { PostsService } from '../shared/posts.service';
 
@@ -29,11 +30,12 @@ export class EditPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private postsService: PostsService
+    private postsService: PostsService,
+    private alert: AlertService
   ) {}
 
   ngOnInit(): void {
-    this.getCurrentRoute();
+    this.getPost();
   }
 
   ngOnDestroy(): void {
@@ -41,7 +43,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
     this.destroy.complete();
   }
 
-  getCurrentRoute(): void {
+  getPost(): void {
     this.route.params
       .pipe(
         switchMap((params: Params) => {
@@ -78,6 +80,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy))
       .subscribe(() => {
         this.submitted = false;
+        this.alert.success('Пост был обновлен');
       });
   }
 }
