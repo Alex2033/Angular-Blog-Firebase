@@ -2,3 +2,9 @@ form {
   max-width: 600px;
   margin: 0 auto;
 }
+
+.form-control {
+  &:first-of-type {
+    margin-top: 15px;
+  }
+}
