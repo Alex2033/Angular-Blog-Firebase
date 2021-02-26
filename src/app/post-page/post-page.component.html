@@ -1,143 +1,20 @@
-<div class="post">
+<div class="post" *ngIf="post | async as post; else loading">
   <header class="header">
-    <h1>Post title</h1>
+    <h1>{{ post.title }}</h1>
 
     <button [routerLink]="['/']" class="btn btn-link">На главную</button>
   </header>
 
   <div class="info">
-    <strong>Тут автор</strong>
-    <small>12.09.2021</small>
+    <strong>{{ post.author }}</strong>
+    <small>{{ post.date | date: "long":null:"ru" }}</small>
   </div>
 
   <div>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-      consectetur molestias fugiat! Delectus corporis perspiciatis recusandae
-      et, commodi odio porro facere quae ipsam debitis, hic veritatis officiis
-      totam tempora similique deleniti! Harum accusantium natus minus, unde
-      voluptate cum. Rem eaque provident ut ex porro quia amet iusto ad illum
-      nesciunt!
-    </p>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-      consectetur molestias fugiat! Delectus corporis perspiciatis recusandae
-      et, commodi odio porro facere quae ipsam debitis, hic veritatis officiis
-      totam tempora similique deleniti! Harum accusantium natus minus, unde
-      voluptate cum. Rem eaque provident ut ex porro quia amet iusto ad illum
-      nesciunt!
-    </p>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-      consectetur molestias fugiat! Delectus corporis perspiciatis recusandae
-      et, commodi odio porro facere quae ipsam debitis, hic veritatis officiis
-      totam tempora similique deleniti! Harum accusantium natus minus, unde
-      voluptate cum. Rem eaque provident ut ex porro quia amet iusto ad illum
-      nesciunt!
-    </p>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-      consectetur molestias fugiat! Delectus corporis perspiciatis recusandae
-      et, commodi odio porro facere quae ipsam debitis, hic veritatis officiis
-      totam tempora similique deleniti! Harum accusantium natus minus, unde
-      voluptate cum. Rem eaque provident ut ex porro quia amet iusto ad illum
-      nesciunt!
-    </p>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-      consectetur molestias fugiat! Delectus corporis perspiciatis recusandae
-      et, commodi odio porro facere quae ipsam debitis, hic veritatis officiis
-      totam tempora similique deleniti! Harum accusantium natus minus, unde
-      voluptate cum. Rem eaque provident ut ex porro quia amet iusto ad illum
-      nesciunt!
-    </p>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-      consectetur molestias fugiat! Delectus corporis perspiciatis recusandae
-      et, commodi odio porro facere quae ipsam debitis, hic veritatis officiis
-      totam tempora similique deleniti! Harum accusantium natus minus, unde
-      voluptate cum. Rem eaque provident ut ex porro quia amet iusto ad illum
-      nesciunt!
-    </p>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-      consectetur molestias fugiat! Delectus corporis perspiciatis recusandae
-      et, commodi odio porro facere quae ipsam debitis, hic veritatis officiis
-      totam tempora similique deleniti! Harum accusantium natus minus, unde
-      voluptate cum. Rem eaque provident ut ex porro quia amet iusto ad illum
-      nesciunt!
-    </p>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-      consectetur molestias fugiat! Delectus corporis perspiciatis recusandae
-      et, commodi odio porro facere quae ipsam debitis, hic veritatis officiis
-      totam tempora similique deleniti! Harum accusantium natus minus, unde
-      voluptate cum. Rem eaque provident ut ex porro quia amet iusto ad illum
-      nesciunt!
-    </p>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-      consectetur molestias fugiat! Delectus corporis perspiciatis recusandae
-      et, commodi odio porro facere quae ipsam debitis, hic veritatis officiis
-      totam tempora similique deleniti! Harum accusantium natus minus, unde
-      voluptate cum. Rem eaque provident ut ex porro quia amet iusto ad illum
-      nesciunt!
-    </p>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-      consectetur molestias fugiat! Delectus corporis perspiciatis recusandae
-      et, commodi odio porro facere quae ipsam debitis, hic veritatis officiis
-      totam tempora similique deleniti! Harum accusantium natus minus, unde
-      voluptate cum. Rem eaque provident ut ex porro quia amet iusto ad illum
-      nesciunt!
-    </p>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-      consectetur molestias fugiat! Delectus corporis perspiciatis recusandae
-      et, commodi odio porro facere quae ipsam debitis, hic veritatis officiis
-      totam tempora similique deleniti! Harum accusantium natus minus, unde
-      voluptate cum. Rem eaque provident ut ex porro quia amet iusto ad illum
-      nesciunt!
-    </p>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-      consectetur molestias fugiat! Delectus corporis perspiciatis recusandae
-      et, commodi odio porro facere quae ipsam debitis, hic veritatis officiis
-      totam tempora similique deleniti! Harum accusantium natus minus, unde
-      voluptate cum. Rem eaque provident ut ex porro quia amet iusto ad illum
-      nesciunt!
-    </p>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-      consectetur molestias fugiat! Delectus corporis perspiciatis recusandae
-      et, commodi odio porro facere quae ipsam debitis, hic veritatis officiis
-      totam tempora similique deleniti! Harum accusantium natus minus, unde
-      voluptate cum. Rem eaque provident ut ex porro quia amet iusto ad illum
-      nesciunt!
-    </p>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-      consectetur molestias fugiat! Delectus corporis perspiciatis recusandae
-      et, commodi odio porro facere quae ipsam debitis, hic veritatis officiis
-      totam tempora similique deleniti! Harum accusantium natus minus, unde
-      voluptate cum. Rem eaque provident ut ex porro quia amet iusto ad illum
-      nesciunt!
-    </p>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-      consectetur molestias fugiat! Delectus corporis perspiciatis recusandae
-      et, commodi odio porro facere quae ipsam debitis, hic veritatis officiis
-      totam tempora similique deleniti! Harum accusantium natus minus, unde
-      voluptate cum. Rem eaque provident ut ex porro quia amet iusto ad illum
-      nesciunt!
-    </p>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-      consectetur molestias fugiat! Delectus corporis perspiciatis recusandae
-      et, commodi odio porro facere quae ipsam debitis, hic veritatis officiis
-      totam tempora similique deleniti! Harum accusantium natus minus, unde
-      voluptate cum. Rem eaque provident ut ex porro quia amet iusto ad illum
-      nesciunt!
-    </p>
+    <quill-view-html [content]="post.text"></quill-view-html>
   </div>
 </div>
+
+<ng-template #loading>
+  <p class="text-center">Загружаю пост...</p>
+</ng-template>

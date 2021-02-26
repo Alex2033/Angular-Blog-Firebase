@@ -10,6 +10,7 @@ import { PostComponent } from './shared/components/post/post.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './admin/shared/auth.interceptor';
 import { registerLocaleData } from '@angular/common';
+import { QuillModule } from 'ngx-quill';
 
 registerLocaleData(ruLocale, 'ru');
 
@@ -27,7 +28,12 @@ const INTERCEPTOR_PROVIDER: Provider = {
     PostPageComponent,
     PostComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    QuillModule.forRoot(),
+  ],
   providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent],
 })

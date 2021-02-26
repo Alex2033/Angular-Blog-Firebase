@@ -8,10 +8,10 @@ import { CreatePageComponent } from './create-page/create-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './shared/auth.guard';
-import { QuillModule } from 'ngx-quill';
 import { SearchPipe } from './shared/search.pipe';
 import { AlertComponent } from './shared/alert/alert.component';
 import { AlertService } from './shared/alert.service';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   imports: [
